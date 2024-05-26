@@ -1,0 +1,65 @@
+<h2 mat-dialog-title>{{ currentUserIndex ? 'Редактирование' : 'Новый клиент' }}</h2>
+<mat-dialog-content>
+  <form class="client-add-form">
+    <mat-form-field appearance="outline" [hideRequiredMarker]="true" class="form-field">
+      <mat-label>Имя</mat-label>
+      <input
+        matInput
+        [formControl]="name"
+        [errorStateMatcher]="matcher"
+      >
+      @if (name.hasError('minlength') && !name.hasError('required')) {
+        <mat-error>Минимальное количество символов: 2</mat-error>
+      }
+      @if (name.hasError('required')) {
+        <mat-error>Обязательное поле</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field appearance="outline" [hideRequiredMarker]="true" class="form-field">
+      <mat-label>Фамилия</mat-label>
+      <input
+        matInput
+        [formControl]="surname"
+        [errorStateMatcher]="matcher"
+      >
+      @if (surname.hasError('minlength') && !surname.hasError('required')) {
+        <mat-error>Минимальное количество символов: 2</mat-error>
+      }
+      @if (surname.hasError('required')) {
+        <mat-error>Обязательное поле</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field appearance="outline" [hideRequiredMarker]="true" class="form-field">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        [formControl]="email"
+        [errorStateMatcher]="matcher"
+      >
+      @if (email.hasError('email') && !email.hasError('required')) {
+        <mat-error>Некорректный адрес</mat-error>
+      }
+      @if (email.hasError('required')) {
+        <mat-error>Обязательное поле</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field appearance="outline" [hideRequiredMarker]="true" class="form-field">
+      <mat-label>Телефон</mat-label>
+      <input
+        matInput
+        [formControl]="phone"
+        [errorStateMatcher]="matcher"
+      >
+      @if (phone.hasError('phone')) {
+        <mat-error>Некорректный номер телефона</mat-error>
+      }
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-dialog-close class="main-button-inverse">Отмена</button>
+  <button class="main-button" [disabled]="!isControlsValid()" (click)="onSubmit()">Сохранить</button>
+</mat-dialog-actions>
+
+

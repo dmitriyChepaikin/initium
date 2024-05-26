@@ -1,0 +1,215 @@
+$blue-main-color: #4A95F7;
+$red-color: #DA1B1B;
+$blue-color: #2F7FD5;
+$gray-color: #BFBFBF;
+
+$none-padding: 0;
+
+@mixin button-mixin($background-color, $text-color) {
+  background-color: $background-color;
+  color: $text-color;
+  border: none;
+  cursor: pointer;
+  padding: 16px 22px;
+  border-radius: 37px;
+  min-width: 80px;
+  font-size: 18px;
+  font-weight: 400;
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+:root {
+  --blue-main-color: #{$blue-main-color};
+  --red-color: #{$red-color};
+  --blue-color: #{$blue-color};
+  --gray-color: #{$gray-color};
+  --none-padding: #{$none-padding};
+}
+
+body {
+  //Инпут
+  --mdc-outlined-text-field-focus-outline-color: var(--blue-color);
+  --mdc-outlined-text-field-focus-label-text-color: var(--blue-color);
+  --mdc-outlined-text-field-error-label-text-color: var(--red-color);
+  --mdc-outlined-text-field-error-outline-color: var(--red-color);
+  --mdc-outlined-text-field-error-focus-outline-color: var(--red-color);
+  --mat-form-field-error-text-color: var(--red-color);
+  --mdc-outlined-text-field-outline-color: var(--gray-color);
+  --mdc-outlined-text-field-label-text-color: var(--gray-color);
+
+  //Чекбокс
+  --mdc-checkbox-unselected-icon-color: var(--gray-color);
+  --mdc-checkbox-unselected-focus-icon-color: var(--gray-color);
+  --mdc-checkbox-selected-icon-color: var(--blue-main-color);
+  --mdc-checkbox-unselected-hover-icon-color: var(--blue-main-color);
+
+  .mat-accent.mat-mdc-checkbox {
+    --mdc-checkbox-selected-focus-icon-color: var(--blue-main-color);
+    --mdc-checkbox-selected-hover-icon-color: var(--blue-main-color);
+    --mdc-checkbox-selected-icon-color: var(--blue-main-color);
+    --mdc-checkbox-selected-pressed-icon-color: var(--blue-main-color);
+    --mdc-checkbox-selected-focus-state-layer-color: var(--blue-main-color);
+    --mdc-checkbox-selected-hover-state-layer-color: var(--blue-main-color);
+    --mdc-checkbox-unselected-pressed-state-layer-color: var(--blue-main-color);
+  }
+
+  //Table
+  --mat-dialog-with-actions-content-padding: var(--none-padding);
+  --mat-dialog-headline-padding: var(--none-padding);
+  --mat-dialog-actions-padding: var(--none-padding);
+
+  margin: 0;
+  background: #E9F3FF;
+  padding: 16px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.main-page-title {
+  padding: 16px 12px;
+  color: var(--blue-color);
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.main-page-icon {
+  &:hover {
+    background: #E2EEFF;
+
+    & span {
+      opacity: 0;
+    }
+  }
+
+  &:active {
+    background: #B5D3FF;
+
+    & span {
+      opacity: 0;
+    }
+  }
+
+  &:disabled {
+    & svg > path {
+      fill: #A8B0BF;
+    }
+
+    & span {
+      opacity: 0;
+    }
+  }
+}
+
+.main-page-table {
+  border-radius: 0 0 20px 20px;
+  overflow: hidden;
+
+  & * tr {
+    height: 47px;
+
+
+    th {
+      color: #2F4C97;
+      font-size: 12px;
+      font-weight: 500;
+
+      &:first-child {
+        width: 50px;
+      }
+    }
+
+    td {
+      color: #263238;
+      font-size: 14px;
+      font-weight: 400;
+
+      &:first-child {
+        width: 50px;
+      }
+    }
+  }
+}
+
+.main-page-table-select {
+  max-width: 50px;
+}
+
+.main-page-table-row {
+  &:hover {
+    cursor: pointer;
+    background: rgba(233, 240, 255, 1)
+  }
+}
+
+.main-button {
+  @include button-mixin(#2F67D5, #FFFFFF);
+
+  &:hover {
+    background: #3C7CF8;
+  }
+
+  &:active {
+    background: #194EB6;
+  }
+
+  &:disabled {
+    background: #D8DEE9;
+  }
+}
+
+.main-button-inverse {
+  @include button-mixin(transparent, #2F67D5);
+
+  &:hover {
+    background: rgba(60, 124, 248, 0.1);
+  }
+
+  &:active {
+    background: rgba(25, 78, 182, 0.2);
+  }
+}
+
+
+.mat-toolbar {
+  border-radius: 20px 20px 0 0;
+  height: 56px !important;
+}
+
+.client-add-modal {
+  width: 448px;
+
+  & .mat-mdc-dialog-title {
+    font-size: 24px !important;
+    font-weight: 500 !important;
+    color: #231F20 !important;
+  }
+
+  & .mat-mdc-dialog-surface {
+    padding: 44px 40px;
+  }
+
+  & .delete-content {
+    padding-top: 28px;
+    min-height: 100px;
+    font-size: 18px;
+    color: #263238;
+  }
+}
+
+.client-add-form {
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-field {
+  width: 100%;
+
+  & * > .mat-mdc-form-field-error {
+    text-align: end;
+    color: var(--red-color);
+  }
+}
